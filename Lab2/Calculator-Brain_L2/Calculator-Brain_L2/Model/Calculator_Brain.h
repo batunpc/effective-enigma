@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Calculator_Brain : NSObject
-@property (nonatomic, strong) NSString *operation;
+@property (nonatomic, weak) NSString *operation;
 
 -(void)pushItem:(double)number;
 -(double)calculate;

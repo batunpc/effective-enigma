@@ -17,10 +17,14 @@
 }
 */
 - (void)drawRect:(CGRect)rect {
-    self.layer.borderColor = UIColor.systemGray2Color.CGColor;
+    
+    if (self.tag == 2) {
+    self.layer.backgroundColor = UIColor.orangeColor.CGColor;
+    }
+    self.layer.borderColor = UIColor.systemGrayColor.CGColor;
     self.layer.borderWidth = 2.5f;
     
-    self.layer.cornerRadius = 7;
+    self.layer.cornerRadius = 35;
     
     
 }

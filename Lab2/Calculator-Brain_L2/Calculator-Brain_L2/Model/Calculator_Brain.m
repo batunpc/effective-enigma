@@ -39,11 +39,12 @@
     NSLog(@"%f %@ %f", fvalue, self.operation, lvalue);
 
     if ([self.operation isEqualToString:@"+"]) result = fvalue + lvalue ;
-    else if([self.operation isEqualToString:@"*"]) result = fvalue * lvalue;
+    else if([self.operation isEqualToString:@"x"]) result = fvalue * lvalue;
     else if([self.operation isEqualToString:@"-"]) result = fvalue - lvalue;
-    self.operation = nil;
-    
+    else if([self.operation isEqualToString:@"÷"]) result = fvalue / lvalue;
+    self.operation = nil; //set the operation pointer weak to NSString
     [self pushItem:result];
+
     return result;
     
 }
