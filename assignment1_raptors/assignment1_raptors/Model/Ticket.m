@@ -9,9 +9,17 @@
 
 @implementation Ticket
 
+-(instancetype)initWithName:(NSString*)name quantity:(int)quantity price:(double)price {
+    self = [super init];
+    
+    if (self) {
+        _ticketType = name;
+        _quantity = quantity;
+        _price = price;
+    }
+    return self;
+}
 
-
-// Description Method
 - (NSString *)ticketBanner {
     return [NSString stringWithFormat:@"%@ Ticket %d - %.2f$", self.ticketType, self.quantity, self.price];
 }

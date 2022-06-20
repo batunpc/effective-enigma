@@ -6,12 +6,9 @@
 //
 
 #import "ViewController.h"
-#import "Ticket.h"
-#import "TicketStore.h"
 @interface ViewController ()
-
-
 @property (nonatomic, strong)NSMutableArray *ticketList;
+@property (nonatomic) NSMutableArray *ticketHistory;
 @property BOOL isEntered;
 @end
 
@@ -31,6 +28,15 @@
     }
     return _ticketList;
 }
+
+- (NSMutableArray *)ticketHistory {
+    if (ticketHistory == nil) {
+        ticketHistory = [[NSMutableArray alloc]init];
+    }
+    return ticketHistory;
+}
+
+@synthesize ticketHistory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -62,7 +68,7 @@
 - (IBAction)ticketQntEntered:(UIButton*)sender {
     if (self.isEntered) {
         self.ticketQntLbl.text = [NSString stringWithFormat:@"%@", sender.titleLabel.text];
-        NSLog(@"%@",sender.currentTitle);
+        
         self.isEntered = NO;
     } else {
         self.ticketQntLbl.text = [NSString stringWithFormat:@"%@%@", self.ticketQntLbl.text, sender.titleLabel.text];
@@ -92,6 +98,10 @@
         [self.ticketList replaceObjectAtIndex:2 withObject:self.tickets.courtside];
         [self.ticketPickerView  reloadAllComponents];
     }
+
+    TicketHistory *purchasedTicket = [[TicketHistory alloc]initWithName:self.ticketTypeLbl.text quantity:[self.ticketQntLbl.text intValue] total:self.totalTicketPriceLbl.text ];
+    
+    [self.ticketHistory addObject:purchasedTicket];
     
     // Reload the PickerView
     [self.ticketPickerView  reloadAllComponents];
@@ -117,4 +127,18 @@
     return total;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"manager"]) {
+        ManagerViewController *managerVC = [segue destinationViewController];
+        // Set next view controller's delegate to self
+        managerVC.delegate = self;
+        // Pass list of tickets and purchased history
+        managerVC.ticketHistory = self.ticketHistory;
+        managerVC.ticketList = self.ticketList;
+    }
+}
+
+-(void)updateTicketList:(NSMutableArray *)ticketList {
+    self.ticketList = ticketList;
+}
 @end

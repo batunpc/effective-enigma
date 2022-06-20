@@ -17,12 +17,12 @@
     return _ticketList;
 }
 
-//- (TicketHistory *)ticketHistory {
-//    if (_ticketHistory == nil) {
-//        _ticketHistory = [[TicketHistory alloc]init];
-//    }
-//    return _ticketHistory;
-//}
+- (TicketHistory *)ticketHistory {
+    if (_ticketHistory == nil) {
+        _ticketHistory = [[TicketHistory alloc]init];
+    }
+    return _ticketHistory;
+}
 
 - (Ticket *)balconyLvl {
     if (_balconyLvl == nil) {

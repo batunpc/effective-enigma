@@ -16,6 +16,9 @@
 		47A64272285C44AF005F66E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47A64271285C44AF005F66E5 /* Assets.xcassets */; };
 		47A64275285C44AF005F66E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47A64273285C44AF005F66E5 /* LaunchScreen.storyboard */; };
 		47A64278285C44AF005F66E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 47A64277285C44AF005F66E5 /* main.m */; };
+		47D04671285FD16200E7477B /* ManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D04670285FD16200E7477B /* ManagerViewController.m */; };
+		47D0469A285FE09700E7477B /* TicketHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D04699285FE09700E7477B /* TicketHistory.m */; };
+		47D046A028605AE300E7477B /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D0469F28605AE300E7477B /* HistoryTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,12 @@
 		47A64274285C44AF005F66E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47A64276285C44AF005F66E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47A64277285C44AF005F66E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		47D0466F285FD16200E7477B /* ManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ManagerViewController.h; path = assignment1_raptors/Scene/ManagerViewController.h; sourceTree = SOURCE_ROOT; };
+		47D04670285FD16200E7477B /* ManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ManagerViewController.m; path = assignment1_raptors/Scene/ManagerViewController.m; sourceTree = SOURCE_ROOT; };
+		47D04698285FE09700E7477B /* TicketHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TicketHistory.h; path = assignment1_raptors/Model/TicketHistory.h; sourceTree = SOURCE_ROOT; };
+		47D04699285FE09700E7477B /* TicketHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TicketHistory.m; path = assignment1_raptors/Model/TicketHistory.m; sourceTree = SOURCE_ROOT; };
+		47D0469E28605AE300E7477B /* HistoryTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
+		47D0469F28605AE300E7477B /* HistoryTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,23 +76,53 @@
 		47A64264285C44AF005F66E5 /* assignment1_raptors */ = {
 			isa = PBXGroup;
 			children = (
+				47D0466E285FC49200E7477B /* UI */,
+				47D0466D285FC45600E7477B /* Model */,
+				47D04669285FC42900E7477B /* Scene */,
 				47A64265285C44AF005F66E5 /* AppDelegate.h */,
 				47A64266285C44AF005F66E5 /* AppDelegate.m */,
 				47A64268285C44AF005F66E5 /* SceneDelegate.h */,
 				47A64269285C44AF005F66E5 /* SceneDelegate.m */,
-				47A6426B285C44AF005F66E5 /* ViewController.h */,
-				47A6426C285C44AF005F66E5 /* ViewController.m */,
-				4755C104285E7D4700714784 /* Ticket.h */,
-				4755C105285E7D4700714784 /* Ticket.m */,
-				4755C12C285E9BD900714784 /* TicketStore.h */,
-				4755C12D285E9BD900714784 /* TicketStore.m */,
-				47A6426E285C44AF005F66E5 /* Main.storyboard */,
 				47A64271285C44AF005F66E5 /* Assets.xcassets */,
-				47A64273285C44AF005F66E5 /* LaunchScreen.storyboard */,
 				47A64276285C44AF005F66E5 /* Info.plist */,
 				47A64277285C44AF005F66E5 /* main.m */,
 			);
 			path = assignment1_raptors;
+			sourceTree = "<group>";
+		};
+		47D04669285FC42900E7477B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				47D0469F28605AE300E7477B /* HistoryTableViewController.m */,
+				47D0469E28605AE300E7477B /* HistoryTableViewController.h */,
+				47A6426C285C44AF005F66E5 /* ViewController.m */,
+				47A6426B285C44AF005F66E5 /* ViewController.h */,
+				47D04670285FD16200E7477B /* ManagerViewController.m */,
+				47D0466F285FD16200E7477B /* ManagerViewController.h */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		47D0466D285FC45600E7477B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4755C12D285E9BD900714784 /* TicketStore.m */,
+				4755C12C285E9BD900714784 /* TicketStore.h */,
+				4755C105285E7D4700714784 /* Ticket.m */,
+				4755C104285E7D4700714784 /* Ticket.h */,
+				47D04699285FE09700E7477B /* TicketHistory.m */,
+				47D04698285FE09700E7477B /* TicketHistory.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47D0466E285FC49200E7477B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				47A6426E285C44AF005F66E5 /* Main.storyboard */,
+				47A64273285C44AF005F66E5 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,11 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47D046A028605AE300E7477B /* HistoryTableViewController.m in Sources */,
 				4755C106285E7D4700714784 /* Ticket.m in Sources */,
 				4755C12E285E9BD900714784 /* TicketStore.m in Sources */,
 				47A6426D285C44AF005F66E5 /* ViewController.m in Sources */,
 				47A64267285C44AF005F66E5 /* AppDelegate.m in Sources */,
+				47D04671285FD16200E7477B /* ManagerViewController.m in Sources */,
 				47A64278285C44AF005F66E5 /* main.m in Sources */,
+				47D0469A285FE09700E7477B /* TicketHistory.m in Sources */,
 				47A6426A285C44AF005F66E5 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

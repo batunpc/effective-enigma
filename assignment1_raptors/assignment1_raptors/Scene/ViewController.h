@@ -8,8 +8,9 @@
 #import <UIKit/UIKit.h>
 #import "Ticket.h"
 #import "TicketStore.h"
-
-@interface ViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+#import "TicketHistory.h"
+#import "ManagerViewController.h"
+@interface ViewController : UIViewController <UpdateDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *ticketQntLbl;
 @property (weak, nonatomic) IBOutlet UILabel *ticketTypeLbl;
