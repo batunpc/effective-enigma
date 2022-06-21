@@ -6,7 +6,7 @@
 //
 
 #import "ManagerViewController.h"
-
+#import "ResetViewController.h"
 @interface ManagerViewController ()
 
 @end
@@ -20,7 +20,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:YES];
-    // Pass data to the previous VC
     [self.delegate updateTicketList:self.ticketList];
 }
 
@@ -31,25 +30,19 @@
         HistoryTableViewController *historyVC = [segue destinationViewController];
         //NSLog(@"Number of items in history: %lu",self.ticketHistory.count);
         //NSMutableArray *arr = [[NSMutableArray alloc]initWithObjects:historyVC, nil];
-        
-        
         historyVC.ticketHistory = self.ticketHistory;
+    }
+    if ([segue.identifier isEqualToString:@"reset"]) {
+        ResetViewController *resetVC = [segue destinationViewController];        
+        resetVC.ticketList = self.ticketList;
     }
 }
 
 
-// Protocol Method
+
 -(void)updatePickerView:(NSMutableArray *)ticketList {
     self.ticketList = ticketList;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -38,11 +38,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Configure cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"historyCell" forIndexPath:indexPath];
     
     TicketHistory *dataObject = [self.ticketHistory objectAtIndex:indexPath.row];
-    
+    // cell
     cell.textLabel.text = dataObject.ticketName;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", dataObject.purchasedQty];
     
@@ -51,11 +50,9 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Create a reference to the Detail VC using storyboard
     DetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-    // Pass selected ticket to the Detail VC
+    
     detailVC.clickedCell = [self.ticketHistory objectAtIndex:indexPath.row];
-    // Present the next VC
     [self presentViewController:detailVC animated:YES completion:nil];
 }
 

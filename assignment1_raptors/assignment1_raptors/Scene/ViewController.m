@@ -106,9 +106,8 @@
 
     [self.ticketHistory addObject:purchasedTicket];
     
-    // Reload the PickerView
+    
     [self.ticketPickerView  reloadAllComponents];
-    // Reset the boolean value for numbers entered
     self.isEntered = YES;
 }
 
@@ -132,9 +131,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"manager"]) {
         ManagerViewController *managerVC = [segue destinationViewController];
-        // Set next view controller's delegate to self
         managerVC.delegate = self;
-        // Pass list of tickets and purchased history
         managerVC.ticketHistory = self.ticketHistory;
         managerVC.ticketList = self.ticketList;
     }
