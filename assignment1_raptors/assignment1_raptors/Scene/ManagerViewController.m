@@ -29,7 +29,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"history"]) {
         HistoryTableViewController *historyVC = [segue destinationViewController];
-        NSLog(@"%@",self.ticketHistory);
+        //NSLog(@"Number of items in history: %lu",self.ticketHistory.count);
+        //NSMutableArray *arr = [[NSMutableArray alloc]initWithObjects:historyVC, nil];
+        
         
         historyVC.ticketHistory = self.ticketHistory;
     }

@@ -19,6 +19,7 @@
 		47D04671285FD16200E7477B /* ManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D04670285FD16200E7477B /* ManagerViewController.m */; };
 		47D0469A285FE09700E7477B /* TicketHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D04699285FE09700E7477B /* TicketHistory.m */; };
 		47D046A028605AE300E7477B /* HistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D0469F28605AE300E7477B /* HistoryTableViewController.m */; };
+		47D046A628614B1700E7477B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D046A528614B1700E7477B /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		47D04699285FE09700E7477B /* TicketHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TicketHistory.m; path = assignment1_raptors/Model/TicketHistory.m; sourceTree = SOURCE_ROOT; };
 		47D0469E28605AE300E7477B /* HistoryTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewController.h; sourceTree = "<group>"; };
 		47D0469F28605AE300E7477B /* HistoryTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewController.m; sourceTree = "<group>"; };
+		47D046A428614B1700E7477B /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		47D046A528614B1700E7477B /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +96,14 @@
 		47D04669285FC42900E7477B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				47D0469F28605AE300E7477B /* HistoryTableViewController.m */,
 				47D0469E28605AE300E7477B /* HistoryTableViewController.h */,
-				47A6426C285C44AF005F66E5 /* ViewController.m */,
+				47D0469F28605AE300E7477B /* HistoryTableViewController.m */,
 				47A6426B285C44AF005F66E5 /* ViewController.h */,
-				47D04670285FD16200E7477B /* ManagerViewController.m */,
+				47A6426C285C44AF005F66E5 /* ViewController.m */,
 				47D0466F285FD16200E7477B /* ManagerViewController.h */,
+				47D04670285FD16200E7477B /* ManagerViewController.m */,
+				47D046A428614B1700E7477B /* DetailViewController.h */,
+				47D046A528614B1700E7477B /* DetailViewController.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -106,12 +111,12 @@
 		47D0466D285FC45600E7477B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4755C12D285E9BD900714784 /* TicketStore.m */,
 				4755C12C285E9BD900714784 /* TicketStore.h */,
-				4755C105285E7D4700714784 /* Ticket.m */,
+				4755C12D285E9BD900714784 /* TicketStore.m */,
 				4755C104285E7D4700714784 /* Ticket.h */,
-				47D04699285FE09700E7477B /* TicketHistory.m */,
+				4755C105285E7D4700714784 /* Ticket.m */,
 				47D04698285FE09700E7477B /* TicketHistory.h */,
+				47D04699285FE09700E7477B /* TicketHistory.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				4755C12E285E9BD900714784 /* TicketStore.m in Sources */,
 				47A6426D285C44AF005F66E5 /* ViewController.m in Sources */,
 				47A64267285C44AF005F66E5 /* AppDelegate.m in Sources */,
+				47D046A628614B1700E7477B /* DetailViewController.m in Sources */,
 				47D04671285FD16200E7477B /* ManagerViewController.m in Sources */,
 				47A64278285C44AF005F66E5 /* main.m in Sources */,
 				47D0469A285FE09700E7477B /* TicketHistory.m in Sources */,

@@ -30,13 +30,12 @@
 }
 
 - (NSMutableArray *)ticketHistory {
-    if (ticketHistory == nil) {
-        ticketHistory = [[NSMutableArray alloc]init];
+    if (_ticketHistory == nil) {
+        _ticketHistory = [[NSMutableArray alloc]init];
     }
-    return ticketHistory;
+    return _ticketHistory;
 }
 
-@synthesize ticketHistory;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +44,8 @@
     // PickerView Delegate & DataSource
     _ticketPickerView.delegate = self;
     _ticketPickerView.dataSource = self;
+    [self.ticketPickerView selectRow:0 inComponent:0 animated:NO]; // autoselecting first row
+
 }
 
 
@@ -61,6 +62,7 @@
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+
     self.ticketTypeLbl.text = [[self.ticketList objectAtIndex:row] ticketType];
 }
 
@@ -81,7 +83,7 @@
     NSNumber *num = [self calculatePriceWithTicket:self.ticketTypeLbl.text number:[self.ticketQntLbl.text doubleValue]];
     self.totalTicketPriceLbl.text = [NSNumberFormatter localizedStringFromNumber:num numberStyle:NSNumberFormatterCurrencyStyle];
     
-    // Subtract the remaining quantity and update the array
+    
     if ([self.ticketTypeLbl.text isEqualToString:@"Balcony Level"]) {
         self.tickets.balconyLvl.quantity = [self.ticketQntLbl.text intValue];
         [self.ticketList replaceObjectAtIndex:0 withObject: self.tickets.balconyLvl];
@@ -100,7 +102,8 @@
     }
 
     TicketHistory *purchasedTicket = [[TicketHistory alloc]initWithName:self.ticketTypeLbl.text quantity:[self.ticketQntLbl.text intValue] total:self.totalTicketPriceLbl.text ];
-    
+    //NSLog(@"%@",self.ticketTypeLbl.text);
+
     [self.ticketHistory addObject:purchasedTicket];
     
     // Reload the PickerView
@@ -111,8 +114,7 @@
 
 
 
-// MARK: Helper Method
-
+// Total = price * quantity
 -(NSNumber*)calculatePriceWithTicket:(NSString*)ticket number:(int)number {
 
     double totalDouble;

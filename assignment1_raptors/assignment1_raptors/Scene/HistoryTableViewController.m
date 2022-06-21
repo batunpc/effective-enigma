@@ -6,7 +6,7 @@
 //
 
 #import "HistoryTableViewController.h"
-
+#import "DetailViewController.h"
 @interface HistoryTableViewController ()
 
 @end
@@ -50,13 +50,13 @@
 }
 
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Create a reference to the Detail VC using storyboard
-//    DetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
-//    // Pass selected ticket to the Detail VC
-//    detailVC.selectedTicket = [self.ticketHistory objectAtIndex:indexPath.row];
-//    // Present the next VC
-//    [self presentViewController:detailVC animated:YES completion:nil];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Create a reference to the Detail VC using storyboard
+    DetailViewController *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
+    // Pass selected ticket to the Detail VC
+    detailVC.clickedCell = [self.ticketHistory objectAtIndex:indexPath.row];
+    // Present the next VC
+    [self presentViewController:detailVC animated:YES completion:nil];
+}
 
 @end
