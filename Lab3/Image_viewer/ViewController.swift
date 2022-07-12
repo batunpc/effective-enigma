@@ -8,7 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let planets = Array(Model().listOfImages)
+    var index = 0
+    
     @IBOutlet weak var planetImg: UIImageView!
     @IBOutlet weak var choosePlanetPC: UIPickerView!
     
@@ -17,12 +20,23 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         choosePlanetPC.delegate = self
         choosePlanetPC.dataSource = self
+        
+        planetImg.isUserInteractionEnabled = true
+        
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureFired(_:)))
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureFired(_:)))
 
+        swipeRightGesture.direction = .right
+        swipeLeftGesture.direction = .left
+        
+        planetImg.addGestureRecognizer(swipeRightGesture)
+        planetImg.addGestureRecognizer(swipeLeftGesture)
     }
-    
-    //MARK: set image data from online
-//    planetImg.image = UIImage(data: <#T##Data#>)
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        Service().downloadImg(urlString: planets.first!.value , imgView: planetImg)
+        super.viewWillAppear(animated)
+    }
 }
 
 //MARK: planet picker view setup
@@ -32,44 +46,66 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Model().listOfImages.count //num of element in dictionary
+        return planets.count //num of element in dictionary
     }
-    
-    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let items = Model().listOfImages
-        let planetName = Array(items)
-        return (planetName[row].key)
+        return (planets[row].key)
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        Service().downloadImg(urlString: planets[row].value , imgView: planetImg)
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pcView = UIView(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
+        return pcView
+    }
+
     
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        //UIView(frame: CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>))
-//        return UILabel()
-//    }
+//MARK: UISwipeGesture Helpers
+    func previous() {
+        if index < planets.count - 1 {
+            index += 1
+           
+        } else if index == planets.count - 1 {
+            index = 0
+        }
+    }
+    func following() {
+        if index > 0 {
+            index -= 1
+        } else if index == 0 {
+            index = planets.count - 1
+        }
+    }
+    @objc func gestureFired(_ gesture: UISwipeGestureRecognizer){
+        if (gesture.direction == .right) {
+            previous()
+            Service().downloadImg(urlString: planets[index].value , imgView: planetImg)
+            
+        }
+        if (gesture.direction == .left){
+            following()
+            Service().downloadImg(urlString: planets[index].value , imgView: planetImg)
+
+        }
+    }
     
+
   
-    
-    //MARK: create class that does networking and have function that does this
-//    func getData(url : String){
-//        let xurl =
-//        "https://images.freeimages.com/images/large-previews/1c9/maine-at-4-45-am-1370871.jpg"
-//        if let myUrl = URL(string: xurl){
-//            // could take a while
-//        let myQ = DispatchQueue(label: "a")
-//            myQ.async {
-//                if let myImgData = try? Data(contentsOf: myUrl){
-//                    DispatchQueue.main.async {
-//                        self.planetImg.image = UIImage(data: myImgData)
-//                    }
+ 
+//    func getData(url : String)  {
 //
+//        Service.shared.getImg(url: xurl) { data in
+//            if let data = data {
+//                DispatchQueue.main.async {
+//                    self.planetImg.image = UIImage(data: data)
 //                }
 //            }
-//
 //        }
-//
 //    }
     
 }
+
 
