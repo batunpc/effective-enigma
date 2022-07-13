@@ -11,9 +11,12 @@ class Model
 {
     //MARK: Dictionary
     lazy var listOfImages: [String : String] = [
-        "Sunrise": "https://images.freeimages.com/images/large-previews/1c9/maine-at-4-45-am-1370871.jpg",
-        "Saturn": "https://images.freeimages.com/images/large-previews/a76/saturn-hd-planet-1152093.jpg",
-        "Sunset": "https://images.freeimages.com/images/large-previews/5c6/sunset-jungle-1383333.jpg"
+        "Earth": "https://wallpapercave.com/wp/wp6666166.png",
+        "Mars": "https://wallpapercave.com/wp/wp6340597.jpg",
+        "Saturn": "https://wallpapercave.com/wp/wp8735756.jpg",
+        "Neptune":"https://wallpapercave.com/wp/wp5161863.jpg",
+        "Venus": "https://wallpapercave.com/wp/wp7448415.jpg",
+        "Moon": "https://wallpapercave.com/wp/wp5466330.jpg"
     ]
     
 }

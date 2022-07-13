@@ -71,17 +71,23 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
         return planets.count //num of element in dictionary
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return (planets[row].key)
-    }
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return (planets[row].key)
+//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getData(url: planets[row].value, planetImg: planetImg)
     }
-//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-//        let pcView = UIView(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-//        return pcView
-//    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+      
+        let pickerRow = UILabel(frame:  CGRect(x:100, y: 100, width: 100, height: 100))
+        pickerRow.text = planets[row].key
+        pickerRow.textColor = UIColor.white
+        pickerRow.font =  UIFont(name: "Arial", size: 25)
+        pickerRow.textAlignment = NSTextAlignment.center
+
+        return pickerRow
+    }
 
 //MARK: UISwipeGesture Helpers
     func previous() -> Int{
