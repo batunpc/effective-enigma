@@ -71,9 +71,6 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
         return planets.count //num of element in dictionary
     }
     
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return (planets[row].key)
-//    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getData(url: planets[row].value, planetImg: planetImg)
