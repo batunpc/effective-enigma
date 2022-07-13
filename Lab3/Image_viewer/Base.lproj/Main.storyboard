@@ -28,8 +28,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ckJ-Og-hRd"/>
                                 </connections>
                             </pickerView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8Qz-gk-E2Y">
-                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8Qz-gk-E2Y">
+                                <rect key="frame" x="174" y="415" width="67" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>

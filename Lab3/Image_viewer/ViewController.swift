@@ -52,13 +52,9 @@ class ViewController: UIViewController {
                         self.planetImg.image = img
                     }
                 }
-                
             }
-           
         }
-        
     }
-
 }
 
 //MARK: planet picker view setup
@@ -71,18 +67,16 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
         return planets.count //num of element in dictionary
     }
     
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getData(url: planets[row].value, planetImg: planetImg)
     }
+    
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-      
         let pickerRow = UILabel(frame:  CGRect(x:100, y: 100, width: 100, height: 100))
         pickerRow.text = planets[row].key
         pickerRow.textColor = UIColor.white
         pickerRow.font =  UIFont(name: "Arial", size: 25)
         pickerRow.textAlignment = NSTextAlignment.center
-
         return pickerRow
     }
 
@@ -115,5 +109,3 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
         }
     }
 }
-
-
