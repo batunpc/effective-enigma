@@ -14,13 +14,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var planetImg: UIImageView!
     @IBOutlet weak var choosePlanetPC: UIPickerView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
         choosePlanetPC.delegate = self
         choosePlanetPC.dataSource = self
         
+        spinner.hidesWhenStopped = true
         planetImg.isUserInteractionEnabled = true
         
         let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureFired(_:)))
@@ -34,9 +36,29 @@ class ViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        Service().downloadImg(urlString: planets.first!.value , imgView: planetImg)
+        getData(url: planets[index].value, planetImg: planetImg)
         super.viewWillAppear(animated)
     }
+    
+    //MARK: helper function for NetworkService
+    func getData(url:String, planetImg : UIImageView){
+        let networkService = NetworkService()
+        spinner.startAnimating()
+        networkService.downloadImg(urlString: url , imgView: planetImg) { data in
+            if let safeData = data{
+                if let img = UIImage(data: safeData){
+                    DispatchQueue.main.async {
+                        self.spinner.stopAnimating()
+                        self.planetImg.image = img
+                    }
+                }
+                
+            }
+           
+        }
+        
+    }
+
 }
 
 //MARK: planet picker view setup
@@ -54,58 +76,41 @@ extension ViewController : UIPickerViewDataSource , UIPickerViewDelegate{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        Service().downloadImg(urlString: planets[row].value , imgView: planetImg)
-        
+        getData(url: planets[row].value, planetImg: planetImg)
     }
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let pcView = UIView(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
-        return pcView
-    }
+//    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+//        let pcView = UIView(frame: CGRect(x: 20, y: 20, width: 20, height: 20))
+//        return pcView
+//    }
 
-    
 //MARK: UISwipeGesture Helpers
-    func previous() {
+    func previous() -> Int{
         if index < planets.count - 1 {
             index += 1
-           
         } else if index == planets.count - 1 {
             index = 0
         }
+        return index
     }
-    func following() {
+    func following() -> Int {
         if index > 0 {
             index -= 1
         } else if index == 0 {
             index = planets.count - 1
         }
+        return index
     }
+    
     @objc func gestureFired(_ gesture: UISwipeGestureRecognizer){
         if (gesture.direction == .right) {
-            previous()
-            Service().downloadImg(urlString: planets[index].value , imgView: planetImg)
-            
+            choosePlanetPC.selectRow(following(), inComponent : 0, animated: true)
+            getData(url: planets[index].value, planetImg: planetImg)
         }
         if (gesture.direction == .left){
-            following()
-            Service().downloadImg(urlString: planets[index].value , imgView: planetImg)
-
+            choosePlanetPC.selectRow(previous(), inComponent: 0, animated: true)
+            getData(url: planets[index].value, planetImg: planetImg)
         }
     }
-    
-
-  
- 
-//    func getData(url : String)  {
-//
-//        Service.shared.getImg(url: xurl) { data in
-//            if let data = data {
-//                DispatchQueue.main.async {
-//                    self.planetImg.image = UIImage(data: data)
-//                }
-//            }
-//        }
-//    }
-    
 }
 
 

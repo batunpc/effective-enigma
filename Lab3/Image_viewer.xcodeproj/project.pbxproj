@@ -14,7 +14,7 @@
 		47549D32287BE296008A355F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47549D30287BE296008A355F /* Main.storyboard */; };
 		47549D34287BE297008A355F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47549D33287BE297008A355F /* Assets.xcassets */; };
 		47549D37287BE297008A355F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47549D35287BE297008A355F /* LaunchScreen.storyboard */; };
-		47847C48287C53B400BEBE6B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47847C47287C53B400BEBE6B /* Service.swift */; };
+		47847C48287C53B400BEBE6B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47847C47287C53B400BEBE6B /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		47549D33287BE297008A355F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47549D36287BE297008A355F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47549D38287BE297008A355F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		47847C47287C53B400BEBE6B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		47847C47287C53B400BEBE6B /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 				47549D2A287BE296008A355F /* AppDelegate.swift */,
 				47549D2C287BE296008A355F /* SceneDelegate.swift */,
 				47549D2E287BE296008A355F /* ViewController.swift */,
-				47847C47287C53B400BEBE6B /* Service.swift */,
+				47847C47287C53B400BEBE6B /* NetworkService.swift */,
 				470BBDFB287C1DEC00A0ADCD /* Model.swift */,
 				47549D30287BE296008A355F /* Main.storyboard */,
 				47549D33287BE297008A355F /* Assets.xcassets */,
@@ -146,7 +146,7 @@
 			files = (
 				47549D2F287BE296008A355F /* ViewController.swift in Sources */,
 				47549D2B287BE296008A355F /* AppDelegate.swift in Sources */,
-				47847C48287C53B400BEBE6B /* Service.swift in Sources */,
+				47847C48287C53B400BEBE6B /* NetworkService.swift in Sources */,
 				47549D2D287BE296008A355F /* SceneDelegate.swift in Sources */,
 				470BBDFC287C1DEC00A0ADCD /* Model.swift in Sources */,
 			);
